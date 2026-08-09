@@ -12,3 +12,42 @@
 # - Make sure indentation is correct (YAML is sensitive to spaces)
 
 # TODO: Write your GitHub Actions workflow YAML below
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Frontend Setup and Build
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Frontend Dependencies & Build
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+      # Backend Setup and Test (Python / Pytest)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Backend Dependencies & Run Tests
+        run: |
+          cd backend/python
+          pip install -r requirements.txt
+          pytest
+          
