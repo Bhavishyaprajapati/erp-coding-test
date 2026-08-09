@@ -1,4 +1,22 @@
-# TODO: Write your AI prompt below this line
+Generate a React component named SupplierPerformance that displays a supplier performance dashboard widget.
 
-
----
+Requirements:
+1. Component Name: SupplierPerformance
+2. Expected Data Structure / Props:
+   - The component should accept a prop `suppliers` or fetch data from an API endpoint `/api/suppliers/performance`.
+   - Data format per supplier item: 
+     {
+       "supplier_id": "string",
+       "supplier_name": "string",
+       "on_time_delivery_percentage": number, (e.g., 92.5)
+       "avg_response_time_hours": number (e.g., 4.2)
+     }
+3. UI Layout:
+   - Use a responsive tabular layout (or interactive card grid) to list each supplier clearly with their metrics: Supplier Name, On-Time Delivery %, and Average Response Time.
+4. Color-Coding Logic:
+   - Implement dynamic color-coding for the "On-Time Delivery Percentage" field:
+     - Green: >= 90%
+     - Yellow: 75% to 89.9%
+     - Red: < 75%
+5. Styling & Framework:
+   - Use Tailwind CSS for styling and clean component structure.
